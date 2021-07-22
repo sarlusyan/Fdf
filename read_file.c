@@ -47,24 +47,24 @@ void    fill_matrix(int *matrix, char *line)
     free(num);
 }
 
-void    file_parameters(char *file_name, get_arg *data)
+void    file_parameters(char *file_name, t_data *img)
 {
     int     fd;
     int     i;
     char    *line;
 
     i = 0;
-    data->height = get_height(file_name);
-    data->width = get_width(file_name);
+    img->height = get_height(file_name);
+    img->width = get_width(file_name);
     
-    data->matrix = (int**)malloc(sizeof(int *) * (data->height));
-    while (i <= data->height)
-        data->matrix[i++] = (int*)malloc(sizeof(int) * (data->width));
+    img->matrix = (int**)malloc(sizeof(int *) * (img->height));
+    while (i <= img->height)
+        img->matrix[i++] = (int*)malloc(sizeof(int) * (img->width));
     fd = open(file_name, O_RDONLY, 0);
     i = 0;
     while (get_next_line(fd, &line))
     {
-        fill_matrix(data->matrix[i], line);
+        fill_matrix(img->matrix[i], line);
         free(line);
         i++;
     }
