@@ -1,17 +1,17 @@
 #include "fdf.h"
 
-void	clear(t_data *img)
+void	clean(t_data *img)
 {
-	int	i;
-	int	j;
+	int i;
+	int j;
 
 	i = 0;
-	while (i < 1920)
+	while (i < img->height_w)
 	{
 		j = 0;
-		while (j < 1080)
+		while (j < img->width_w)
 		{
-			mlx_pixel_put(img->mlx, img->mlx_win, i, j, 0x000000);
+			my_mlx_pixel_put(img, j, i, 0);
 			j++;
 		}
 		i++;
@@ -20,6 +20,7 @@ void	clear(t_data *img)
 
 int	key_hook_my(int keycode, t_data *img)
 {
+
 	if (keycode == 53)
         exit(0);
 	if (keycode == 0) //a
@@ -30,7 +31,7 @@ int	key_hook_my(int keycode, t_data *img)
 		img->move_y -= 10;
 	if (keycode == 1) // s
 		img->move_y += 10;
-	// clear(img);
+	clean(img);
 	connect_points(img);
     return 0;
 }
@@ -43,7 +44,7 @@ void	my_mlx_pixel_put(t_data *img, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-void    connect_points(t_data *img)
+int    connect_points(t_data *img)
 {
 	int	x;
 	int	y;
@@ -62,4 +63,8 @@ void    connect_points(t_data *img)
 		}
 		y++;
 	}
+	mlx_key_hook(img->mlx_win, key_hook_my, img);
+	mlx_put_image_to_window(img->mlx, img->mlx_win, img->img, 0, 0);
+	mlx_loop(img->mlx);
+	return 0;   
 }
