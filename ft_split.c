@@ -38,7 +38,7 @@ int		ft_strsplit(char *s, char c)
 	size_t		len;
 	size_t		word_cnt;
 	char		**words;
-	int			i;
+
 	if (!s || !(words = (char **)malloc(sizeof(char *) * (get_cnt(s, c) + 1))))
 		return (0);
 	word_cnt = get_cnt(s, c);
@@ -126,7 +126,7 @@ char	**ft_split(char *s, char c)
 	size_t		len;
 	size_t		word_cnt;
 	char		**words;
-	int			i;
+
 	if (!s || !(words = (char **)malloc(sizeof(char *) * (get_cnt(s, c) + 1))))
 		return (NULL);
 	word_cnt = get_cnt(s, c);

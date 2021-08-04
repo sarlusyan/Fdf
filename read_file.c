@@ -22,11 +22,23 @@ int     get_width(char *file_name)
     char    *line;
     int     width;
     int     fd;
+    int     mnacac_width;
 
     width = 0;
     fd = open(file_name, O_RDONLY, 0);
     get_next_line(fd, &line);
     width = ft_strsplit(line, ' ');
+    while (get_next_line(fd, &line))
+    {
+        
+        mnacac_width = ft_strsplit(line, ' '); ;
+        if (mnacac_width != width)
+        {
+            write(1, "ERROR\n", 6);
+            exit(0);
+        }
+        free(line);
+    }
     free(line);
     close(fd);
     return(width);

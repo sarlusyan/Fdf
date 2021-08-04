@@ -31,8 +31,7 @@ void    bresenham(float x, float y, float x1, float y1, t_data *img)
     int     max;
     float   x_step;
     float   y_step;
-    
-    img->zoom = 20;
+   
     z = img->matrix[(int)y][(int)x];  
     z1 = img->matrix[(int)y1][(int)x1];
     x *= img->zoom;

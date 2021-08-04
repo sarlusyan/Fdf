@@ -3,10 +3,11 @@
 int main(int argc, char **argv)
 {
 	t_data	img;
-
+	check(argc, argv);
     file_parameters(argv[1], &img);
 	img.width_w = 1920;
 	img.height_w = 1080;
+	img.zoom = 10;
     img.move_x = img.width_w / 2;
     img.move_y = img.height_w / 2;
 	img.mlx = mlx_init();

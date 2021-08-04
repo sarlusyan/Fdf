@@ -7,6 +7,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <math.h>
+#include <fcntl.h>
 
 typedef struct	s_data
 {
@@ -28,8 +29,11 @@ typedef struct	s_data
     int		**matrix;
 }	t_data;
 
+void    check(int argc, char **argv);
 int     get_next_line(int fd, char **line);
 int		ft_atoi(char *str);
+void	clean(t_data *img);
+// int	ft_atoi(char *str, char *base);
 size_t	ft_strlen(char *str);
 size_t	get_cnt(char *s, char c);
 int     free_machine_str(char **s, size_t idx);
